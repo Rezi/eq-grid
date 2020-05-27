@@ -1,0 +1,33 @@
+{
+  "name": "eq-grid",
+  "version": "0.1.1",
+  "description": "Next generation grid made via custom element",
+  "main": "eq-grid.js",
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "uglify-es": "^3.3.9"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "uglify": "uglifyjs eq-grid.js -o watched-box.min.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run uglify"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rezi/eq-grid.git"
+  },
+  "author": "Tomas Rezac",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rezi/eq-grid/issues"
+  },
+  "homepage": "https://github.com/Rezi/eq-grid#readme"
+}
