@@ -1,6 +1,6 @@
 {
   "name": "eq-grid",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Next generation grid made via custom element",
   "main": "eq-grid.min.js",
   "dependencies": {},
@@ -10,7 +10,7 @@
     "uglify-es": "^3.3.9"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,7 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/Rezi/eq-grid.git"
   },
-  "author": "Tomas Rezac",
+  "author": "rezi99",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Rezi/eq-grid/issues"

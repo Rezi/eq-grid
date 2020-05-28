@@ -3,7 +3,7 @@
 1KB (minified) next generation grid made via custom element `<eq-grid>`.
 It is made to to be used inside various modern JS frameworks; built around idea of element queries (responsiveness is based on container width, rather than window width). So you can use it inside components without a need to think how wide your comonent will be.
 
-See its real usage in this [React](https://codesandbox.io/s/eq-react-28owx) example app.
+See its real usage in this [React](https://codesandbox.io/s/eq-react-ijuzj) example app.
 
 ![enter image description here](https://raw.githubusercontent.com/Rezi/eq-grid/feature/readme/grid.png)
 
@@ -42,5 +42,5 @@ See its real usage in this [React](https://codesandbox.io/s/eq-react-28owx) exam
 
 Your project need to be either transpiled withr to es6 or newer, or use es5 and include `<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.3/custom-elements-es5-adapter.js"></script>` into your `<HTML>` `<HEAD>`
 
-Eq-grid is a native component based and hence works in almost all FE frameworks, you can check test integrations with [React](https://codesandbox.io/s/eq-react-28owx), [Angular](https://codesandbox.io/s/eq-angular-3rc8g), [Vue](https://codesandbox.io/s/eq-vue-4u4kn) and [Svelte](https://codesandbox.io/s/eq-svelte-8py0c)
+Eq-grid is a native component based and hence works in almost all FE frameworks, you can check test integrations with [React](https://codesandbox.io/s/eq-react-ijuzj), [Angular](https://codesandbox.io/s/eq-angular-3rc8g), [Vue](https://codesandbox.io/s/eq-vue-4u4kn) and [Svelte](https://codesandbox.io/s/eq-svelte-8py0c)
 (Note that some of the implementation don't use eq-grid npm package from github - but rather use local file, it is caused by limitation by codesandbox, which doesn't allow user to change some of default transpile settings for certain framework)
