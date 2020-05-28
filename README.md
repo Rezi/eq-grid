@@ -1,6 +1,6 @@
 # eq-grid
 
-1KB (minified) next generation responsive grid made via custom element `<eq-grid>`.
+1KB (gzipped) next generation responsive grid made via custom element `<eq-grid>`.
 
 It is made to to be used inside various modern JS frameworks; built around idea of element queries (responsiveness is based on container width, rather than window width). So you can use it inside components without a need to think, how wide is your comonent.
 
