@@ -2,6 +2,7 @@
 
 1KB (minified) next generation grid made via custom element `<eq-grid>`.
 It is made to to be used inside various modern JS frameworks; built around idea of element queries (responsiveness is based on container width, rather than window width). So you can use it inside components without a need to think how wide your comonent will be.
+See its real usage in this [React](https://codesandbox.io/s/eq-react-28owx) example app.
 
 ![enter image description here](https://raw.githubusercontent.com/Rezi/eq-grid/feature/readme/grid.png)
 
@@ -13,8 +14,6 @@ It is made to to be used inside various modern JS frameworks; built around idea 
 | **.eq-grid-dense**      | Add grid-auto-flow: dense;. It tries to fill empty gaps in the grid with out of order elements.                                                                                     |
 | **.eq-grid-N-collapse** | (N: numbers from 2 to 6)<br> Tells when children of the container collapse to full width.<br> eq-grid-n-collapse collapse when container is smaller than<br> (n + 1) \* columnWidth |
 | **.eq-grid-gap-N**      | (N: 0 or 1 or 3)<br> Set the gap between elements of column<br> 0 => 0rem<br> 1 => 0.5rem<br> 2 => 1rem (this is default hence there is not class for it)<br> 3 => 2 rem<br>        |
-
----
 
 | Class                          | Grid children's classes                                                                                      |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------ |
