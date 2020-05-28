@@ -2,9 +2,10 @@
   "name": "eq-grid",
   "version": "0.1.1",
   "description": "Next generation grid made via custom element",
-  "main": "eq-grid.js",
+  "main": "eq-grid.min.js",
   "dependencies": {},
   "devDependencies": {
+    "git-branch-is": "^3.1.0",
     "husky": "^4.2.5",
     "uglify-es": "^3.3.9"
   },
@@ -17,7 +18,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run uglify"
+      "pre-commit": "npm run uglify",
+      "postmerge": "(git-branch-is master && npm version minor || (git-branch-is dev && npm --no-git-tag-version version patch)"
     }
   },
   "repository": {
