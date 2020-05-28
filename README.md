@@ -18,6 +18,7 @@ just import the `eq-grid` module in your js/ts code before you render anything;
 
     import 'eq-grid';
 
+
 Your project needs to be either transpiled to es6 (es2015) or newer, or use es5 and include `<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.3/custom-elements-es5-adapter.js"></script>` in your `<HTML><HEAD>`
 
 ## Usage
@@ -45,27 +46,17 @@ Your project needs to be either transpiled to es6 (es2015) or newer, or use es5 
 
 ## Support
 
-| Browser | Version |
-
+| Browser            | Version |
 | ------------------ | ------- |
-
-| Edge | 79+ |
-
-| Firefox | 69+ |
-
-| Chrome | 64+ |
-
-| Safari | 13.1+ |
-
-| Opera | 52+ |
-
-| iOS Safari | 13.4+ |
-
-| Android Browser | yes |
-
-| Opera mini | No |
-
-| Chrome for Android | yes |
+| Edge               | 79+     |
+| Firefox            | 69+     |
+| Chrome             | 64+     |
+| Safari             | 13.1+   |
+| Opera              | 52+     |
+| iOS Safari         | 13.4+   |
+| Android Browser    | yes     |
+| Opera mini         | No      |
+| Chrome for Android | yes     |
 
 ## Examples
 
