@@ -2,6 +2,7 @@
 
 1KB (minified) next generation grid made via custom element `<eq-grid>`.
 It is made to to be used inside various modern JS frameworks; built around idea of element queries (responsiveness is based on container width, rather than window width). So you can use it inside components without a need to think how wide your comonent will be.
+
 See its real usage in this [React](https://codesandbox.io/s/eq-react-28owx) example app.
 
 ![enter image description here](https://raw.githubusercontent.com/Rezi/eq-grid/feature/readme/grid.png)

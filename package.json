@@ -18,8 +18,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run uglify",
-      "postmerge": "(git-branch-is master && npm version minor || (git-branch-is dev && npm --no-git-tag-version version patch)"
+      "pre-commit": "npm run uglify"
     }
   },
   "repository": {
