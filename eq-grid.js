@@ -33,14 +33,15 @@ export function initEqGrid(
             position: 'absolute',
             width: value,
           });
-          this.appendChild(test);
+          document.body.appendChild(test);
           let pixels = test.offsetWidth;
-          this.removeChild(test);
+          document.body.removeChild(test);
           return pixels;
         }
 
         toggleClasses(watched, value, contentRect) {
           const query = contentRect.width <= this.getPixels(value + units);
+
           watched.target.classList.toggle(`max-width-${value}`, query);
           watched.target.classList.toggle(`min-width-${value}`, !query);
         }
