@@ -14,10 +14,18 @@ See its real usage in this [React](https://codesandbox.io/s/eq-react-ijuzj) exam
 
 **To use in your project:**
 
-just import the `eq-grid` module in your js/ts code before you render anything;
+Import the `initEqGrid` from `eq-grid` and run it with optional parameters.
+You need to do it before you render anything;
 
-    import 'eq-grid';
+    import { initEqGrid } from './eq-grid.js';
+    initEqGrid(10, 1, 'rem');
 
+`initEqGrid` accepts 4 optional parameters:
+
+- 'column width' (default: 100)
+- 'gap width' (default: 16)
+- 'units' (default: 'px')
+- 'maxColspan' (default: 6) - if it is six, classes like **.eq-col-N** will be generated with N upto 'maxColspan'
 
 Your project needs to be either transpiled to es6 (es2015) or newer, or use es5 and include `<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.3/custom-elements-es5-adapter.js"></script>` in your `<HTML><HEAD>`
 
@@ -25,24 +33,24 @@ Your project needs to be either transpiled to es6 (es2015) or newer, or use es5 
 
 ### Grid container \<eq-grid\>
 
-|                         |                                                                                                                                                                                     |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **\<eq-grid\>**         | Define element as grid container.                                                                                                                                                   |
-| **.eq-grid-dense**      | Add grid-auto-flow: dense;. It tries to fill empty gaps in the grid with out of order elements.                                                                                     |
-| **.eq-grid-N-collapse** | (N: numbers from 2 to 6)<br> Tells when children of the container collapse to full width.<br> eq-grid-n-collapse collapse when container is smaller than<br> (n + 1) \* columnWidth |
-| **.eq-grid-gap-N**      | (N: 0 or 1 or 3)<br> Set the gap between elements of column<br> 0 => 0rem<br> 1 => 0.5rem<br> 2 => 1rem (this is default hence there is not class for it)<br> 3 => 2 rem<br>        |
+|                         |                                                                                                                                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **\<eq-grid\>**         | Define element as grid container.                                                                                                                                                                             |
+| **.eq-grid-dense**      | Add grid-auto-flow: dense;. It tries to fill empty gaps in the grid with out of order elements.                                                                                                               |
+| **.eq-grid-N-collapse** | (N: numbers from 2 to 6)<br> Tells when children of the container collapse to full width.<br> eq-grid-n-collapse collapse when container is smaller than<br> (n + 1) \* columnWidth                           |
+| **.eq-grid-gap-N**      | (N: 0, 0-5, 2)<br> Set the gap between elements of column<br> 0 => 0<br> 0-5 => half of default gap<br> 1 => default (this is default hence there is not class for it)<br> 2 => double of the default gap<br> |
 
 ![enter image description here](https://raw.githubusercontent.com/Rezi/eq-grid/feature/readme/grid.png)
 
 ### Grid children
 
-|                                |                                                                                                              |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| **.eq-col** <br> **.eq-col-N** | (N:number from 2 to 6)<br> Define how many columns the element will take.                                    |
-| **.eq-col-max**                | This element always has full (container's) width                                                             |
-| **.eq-row-N**                  | (N:number from 2 to 3) <br> Define how many rows the element will take.                                      |
-| **.eq-col-N-M**                | (N, M: numbers from 2 to 6) <br> Define how many columns the element will take (N) at specific grid size (M) |
-| **.eq-col-N-collapse**         | Tells at which container size it sould collapse to full width.                                               |
+|                                |                                                                                                                         |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| **.eq-col** <br> **.eq-col-N** | (N:number from 2 to `maxColspan`)<br> Define how many columns the element will take.                                    |
+| **.eq-col-max**                | This element always has full (container's) width                                                                        |
+| **.eq-row-N**                  | (N:number from 2 to 3) <br> Define how many rows the element will take.                                                 |
+| **.eq-col-N-M**                | (N, M: numbers from 2 to `maxColspan`) <br> Define how many columns the element will take (N) at specific grid size (M) |
+| **.eq-col-N-collapse**         | Tells at which container size it sould collapse to full width.                                                          |
 
 ## Support
 
