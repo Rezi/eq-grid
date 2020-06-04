@@ -1,6 +1,6 @@
 {
   "name": "eq-grid",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Next generation grid made via custom element",
   "main": "eq-grid.min.js",
   "dependencies": {},
