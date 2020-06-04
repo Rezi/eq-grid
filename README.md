@@ -14,7 +14,8 @@ See its real usage in this [React](https://codesandbox.io/s/eq-react-ijuzj) exam
 
 **To use in your project:**
 
-import the `initEqGrid` from `eq-grid` and run it with optional parameters. You need to do it before you render anything;
+Import the `initEqGrid` from `eq-grid` and run it with optional parameters.
+You need to do it before you render anything;
 
     import { initEqGrid } from './eq-grid.js';
     initEqGrid(10, 1, 'rem');
