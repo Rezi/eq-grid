@@ -2,8 +2,7 @@ export function initEqGrid(
   gridColWidth = 100,
   gridGap = 16,
   units = 'px',
-  maxColspan = 6,
-  maxColCollapse = 6
+  maxColspan = 6
 ) {
   if (ResizeObserver && 'customElements' in window) {
     if (!customElements.get('eq-grid')) {
@@ -20,8 +19,7 @@ export function initEqGrid(
               gridColWidth,
               gridGap,
               units,
-              maxColspan,
-              maxColCollapse
+              maxColspan
             );
             document.getElementsByTagName('head')[0].appendChild(style);
           }
@@ -68,16 +66,8 @@ export function initEqGrid(
   }
 }
 
-function generateCss(gridColWidth, gridGap, units, maxColspan, maxColCollapse) {
-  let css = `
-    eq-grid {
-      display: grid;
-    }
-    
-    .eq-grid-dense {
-      grid-auto-flow: dense;
-    }
-    
+function generateCss(gridColWidth, gridGap, units, maxColspan) {
+  let css = `  
     eq-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(${gridColWidth}${units}, 1fr));
@@ -105,6 +95,10 @@ function generateCss(gridColWidth, gridGap, units, maxColspan, maxColCollapse) {
     eq-grid .eq-col-max {
       grid-column-start: 1;
       grid-column-end: -1;
+    }
+    
+    .eq-grid-dense {
+      grid-auto-flow: dense;
     }`;
 
   for (var i = 2; i <= maxColspan; i++) {
@@ -134,7 +128,7 @@ function generateCss(gridColWidth, gridGap, units, maxColspan, maxColCollapse) {
       grid-column-start: 1;
       grid-column-end: -1;`;
 
-  for (var i = 2; i <= maxColCollapse; i++) {
+  for (var i = 2; i <= maxColspan; i++) {
     for (var j = 1; j <= i; j++) {
       if (j > 1) {
         css += `
@@ -170,44 +164,23 @@ function generateCss(gridColWidth, gridGap, units, maxColspan, maxColCollapse) {
     }
   }
 
-  css += `
-    .eq-grid-gap-0 {
-      margin: 0;
+  [
+    { name: '0', val: 0 },
+    { name: '0-5', val: 0.5 },
+    { name: '2', val: 2 },
+  ].forEach((gap) => {
+    const gapCssValue = (gridGap / 2) * gap.val + units;
+    css += `
+    .eq-grid-gap-${gap.name} {
+      margin: -${gapCssValue};
     }
-  
-    .eq-grid-gap-0 [class*='eq-col'] {
-      padding: 0;
+    .eq-grid-gap-${gap.name} [class*='eq-col'] {
+      padding: ${gapCssValue};
     }
-  
-    .eq-grid-gap-0 eq-grid {
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-    
-    .eq-grid-gap-1 {
-      margin: -${gridGap / 4}${units};
-    }
-    .eq-grid-gap-1 [class*='eq-col'] {
-      padding: ${gridGap / 4}${units};
-    }
-    
-    .eq-grid-gap-1 eq-grid {
-      padding: ${gridGap / 4}${units} 0 !important;
-      margin: -${gridGap / 4}${units} 0 !important;    
-    }
-      
-    .eq-grid-gap-3 {
-      margin: -${gridGap}${units};
-    }
-  
-    .eq-grid-gap-3 [class*='eq-col'] {
-      padding: ${gridGap}${units};
-    }
-    
-    .eq-grid-gap-3 eq-grid {
-      padding: ${gridGap}${units} 0 !important;
-      margin: -${gridGap}${units} 0 !important;
+    .eq-grid-gap-${gap.name} eq-grid {
+      padding: ${gapCssValue} 0 !important;
+      margin: -${gapCssValue} 0 !important;    
     }`;
-
+  });
   return css;
 }
