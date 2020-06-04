@@ -37,7 +37,7 @@ Your project needs to be either transpiled to es6 (es2015) or newer, or use es5 
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **\<eq-grid\>**         | Define element as grid container.                                                                                                                                                                             |
 | **.eq-grid-dense**      | Add grid-auto-flow: dense;. It tries to fill empty gaps in the grid with out of order elements.                                                                                                               |
-| **.eq-grid-N-collapse** | (N: numbers from 2 to 6)<br> Tells when children of the container collapse to full width.<br> eq-grid-n-collapse collapse when container is smaller than<br> (n + 1) \* columnWidth                           |
+| **.eq-grid-N-collapse** | (N: numbers from 2 to `maxColspan`)<br> Tells when children of the container collapse to full width.<br> eq-grid-n-collapse collapse when container is smaller than<br> (n + 1) \* columnWidth                |
 | **.eq-grid-gap-N**      | (N: 0, 0-5, 2)<br> Set the gap between elements of column<br> 0 => 0<br> 0-5 => half of default gap<br> 1 => default (this is default hence there is not class for it)<br> 2 => double of the default gap<br> |
 
 ![enter image description here](https://raw.githubusercontent.com/Rezi/eq-grid/feature/readme/grid.png)
