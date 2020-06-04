@@ -5,68 +5,68 @@ $grid-col-width: 100px;
 $real-grid-gap: 0px;
 
 eq-grid {
-  display: grid;
+    display: grid;
 }
 
 .eq-grid-dense {
-  grid-auto-flow: dense;
+    grid-auto-flow: dense;
 }
 
 eq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($grid-col-width, 1fr));
-  word-break: break-word;
-  grid-gap: $real-grid-gap;
-  margin: (-$grid-gap / 2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($grid-col-width, 1fr));
+    word-break: break-word;
+    grid-gap: $real-grid-gap;
+    margin: (-$grid-gap / 2);
 
-  > * {
-    padding: ($grid-gap / 2);
-  }
-
-  > eq-grid {
-    padding: ($grid-gap / 2) 0;
-    margin: (-$grid-gap / 2) 0;
-  }
-
-  .eq-row-2 {
-    grid-row: span 2;
-  }
-
-  .eq-row-3 {
-    grid-row: span 3;
-  }
-
-  .eq-col-max {
-    grid-column-start: 1;
-    grid-column-end: -1;
-  }
-
-  @for $i from 2 through $max-colspan {
-    %selector-grid-column-#{$i} {
-      grid-column: span #{$i};
+    >* {
+        padding: ($grid-gap / 2);
     }
 
-    &.min-width-#{($i * $grid-col-width)+($real-grid-gap * ( $i - 1) )} {
-      @for $j from $i through $max-colspan {
-        > [class*='eq-col-#{$j}'] {
-          @extend %selector-grid-column-#{$i};
+    >eq-grid {
+        padding: ($grid-gap / 2) 0;
+        margin: (-$grid-gap / 2) 0;
+    }
+
+    .eq-row-2 {
+        grid-row: span 2;
+    }
+
+    .eq-row-3 {
+        grid-row: span 3;
+    }
+
+    .eq-col-max {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    @for $i from 2 through $max-colspan {
+        %selector-grid-column-#{$i} {
+            grid-column: span #{$i};
         }
-      }
-    }
 
-    /* Collapse functionality for single grid elements */
-    @for $k from 1 through $i {
-      &.min-width-#{($i * $grid-col-width)+($real-grid-gap * ( $i - 1) )} {
-        &.max-width-#{(($i + 1) * $grid-col-width)+($real-grid-gap * ( $i - 1) )} {
-          @if $k != $i {
-            .eq-col-#{$k}-#{$i} {
-              grid-column: span #{$k};
+        &.min-width-#{($i * $grid-col-width)+($real-grid-gap * ( $i - 1) )} {
+            @for $j from $i through $max-colspan {
+                >[class*='eq-col-#{$j}'] {
+                    @extend %selector-grid-column-#{$i};
+                }
             }
-          }
         }
-      }
+
+        /* Collapse functionality for single grid elements */
+        @for $k from 1 through $i {
+            &.min-width-#{($i * $grid-col-width)+($real-grid-gap * ( $i - 1) )} {
+                &.max-width-#{(($i + 1) * $grid-col-width)+($real-grid-gap * ( $i - 1) )} {
+                    @if $k !=$i {
+                        .eq-col-#{$k}-#{$i} {
+                            grid-column: span #{$k};
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
 }
 
 /**** COLLAPSE FUNCTIONALITY ****/
@@ -75,79 +75,84 @@ eq-grid {
       when grid contaner width is smaller than ($grid-col-width * 4 + $real-grid-gap * 3) */
 
 %collapse-grid-columns {
-  grid-column-start: 1;
-  grid-column-end: -1;
+    grid-column-start: 1;
+    grid-column-end: -1;
 }
 
 @for $i from 2 through $max-col-collapse {
-  /* This does not create the html attributes for querying, 
-  it depends on the query creation few lines above*/
-  .eq-grid-#{$i}-collapse.max-width-#{(($i + 1) * $grid-col-width)+($real-grid-gap *  $i)} {
-    @for $j from 1 through $i {
-      @if $j > 1 {
-        > [class*='eq-col-#{$j}'] {
-          @extend %collapse-grid-columns;
-        }
-      } @else {
-        > .eq-col {
-          @extend %collapse-grid-columns;
-        }
-      }
-    }
-  }
 
-  eq-grid.max-width-#{(($i + 1) * $grid-col-width)+($real-grid-gap *  $i) } {
-    @for $j from 1 through $i {
-      @if $j > 1 {
-        > .eq-col-#{$j}.eq-col-#{$i}-collapse {
-          @extend %collapse-grid-columns;
+    /* This does not create the html attributes for querying, 
+  it depends on the query creation few lines above*/
+    .eq-grid-#{$i}-collapse.max-width-#{(($i + 1) * $grid-col-width)+($real-grid-gap *  $i)} {
+        @for $j from 1 through $i {
+            @if $j>1 {
+                >[class*='eq-col-#{$j}'] {
+                    @extend %collapse-grid-columns;
+                }
+            }
+
+            @else {
+                >.eq-col {
+                    @extend %collapse-grid-columns;
+                }
+            }
         }
-      } @else {
-        > .eq-col.eq-col-#{$i}-collapse {
-          @extend %collapse-grid-columns;
-        }
-      }
     }
-  }
+
+    eq-grid.max-width-#{(($i + 1) * $grid-col-width)+($real-grid-gap *  $i) } {
+        @for $j from 1 through $i {
+            @if $j>1 {
+                >.eq-col-#{$j}.eq-col-#{$i}-collapse {
+                    @extend %collapse-grid-columns;
+                }
+            }
+
+            @else {
+                >.eq-col.eq-col-#{$i}-collapse {
+                    @extend %collapse-grid-columns;
+                }
+            }
+        }
+    }
 }
 
 .eq-grid-gap-0 {
-  margin: 0;
+    margin: 0;
 
-  [class*='eq-col'] {
-    padding: 0;
-  }
+    [class*='eq-col'] {
+        padding: 0;
+    }
 
-  eq-grid {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
+    eq-grid {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
 }
 
 .eq-grid-gap-1 {
-  margin: (-$grid-gap / 4);
+    margin: (-$grid-gap / 4);
 
-  [class*='eq-col'] {
-    padding: ($grid-gap / 4);
-  }
+    [class*='eq-col'] {
+        padding: ($grid-gap / 4);
+    }
 
-  eq-grid {
-    padding: ($grid-gap / 4) 0 !important;
-    margin: (-$grid-gap / 4) 0 !important;
-  }
+    eq-grid {
+        padding: ($grid-gap / 4) 0 !important;
+        margin: (-$grid-gap / 4) 0 !important;
+    }
 }
 
 // .eq-grid-gap-2 is default
 
 .eq-grid-gap-3 {
-  margin: -$grid-gap;
+    margin: -$grid-gap;
 
-  [class*='eq-col'] {
-    padding: $grid-gap;
-  }
+    [class*='eq-col'] {
+        padding: $grid-gap;
+    }
 
-  eq-grid {
-    padding: $grid-gap 0 !important;
-    margin: -$grid-gap 0 !important;
-  }
+    eq-grid {
+        padding: $grid-gap 0 !important;
+        margin: -$grid-gap 0 !important;
+    }
 }
