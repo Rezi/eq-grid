@@ -19,7 +19,7 @@ See its real usage in this [React](https://codesandbox.io/s/eq-react-ijuzj) exam
 Import the `initEqGrid` from `eq-grid` and run it with optional parameters.
 You need to do it before you render anything;
 
-    import { initEqGrid } from './eq-grid.js';
+    import { initEqGrid } from 'eq-grid';
     initEqGrid(10, 1, 'rem');
 
 `initEqGrid` accepts 4 optional parameters:
