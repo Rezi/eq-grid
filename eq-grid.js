@@ -1,34 +1,34 @@
 export function initEqGrid(
   gridColWidth = 100,
   gridGap = 16,
-  units = 'px',
+  units = "px",
   maxColspan = 6
 ) {
-  if (ResizeObserver && 'customElements' in window) {
-    if (!customElements.get('eq-grid')) {
+  if (ResizeObserver && "customElements" in window) {
+    if (!customElements.get("eq-grid")) {
       class EqGrid extends HTMLElement {
         constructor() {
           super();
 
-          const gridStyles = document.getElementById('eq-grid-styles');
+          const gridStyles = document.getElementById("eq-grid-styles");
           if (!gridStyles) {
-            var style = document.createElement('style');
-            style.type = 'text/css';
-            style.id = 'eq-grid-styles';
+            var style = document.createElement("style");
+            style.type = "text/css";
+            style.id = "eq-grid-styles";
             style.innerHTML = generateCss(
               gridColWidth,
               gridGap,
               units,
               maxColspan
             );
-            document.getElementsByTagName('head')[0].appendChild(style);
+            document.getElementsByTagName("head")[0].appendChild(style);
           }
         }
 
         getPixels(value) {
-          let test = document.createElement('div');
+          let test = document.createElement("div");
           Object.assign(test.style, {
-            position: 'absolute',
+            position: "absolute",
             width: value,
           });
           document.body.appendChild(test);
@@ -48,7 +48,7 @@ export function initEqGrid(
           this.ro = new ResizeObserver((entries) => {
             const watched = entries[0];
             const contentRect = watched.contentRect;
-            for (let i = 2; i <= 7; i++) {
+            for (let i = 2; i <= maxColspan + 1; i++) {
               this.toggleClasses(watched, i * gridColWidth, contentRect);
             }
           });
@@ -61,7 +61,7 @@ export function initEqGrid(
         }
       }
 
-      customElements.define('eq-grid', EqGrid);
+      customElements.define("eq-grid", EqGrid);
     }
   }
 }
@@ -165,9 +165,9 @@ function generateCss(gridColWidth, gridGap, units, maxColspan) {
   }
 
   [
-    { name: '0', val: 0 },
-    { name: '0-5', val: 0.5 },
-    { name: '2', val: 2 },
+    { name: "0", val: 0 },
+    { name: "0-5", val: 0.5 },
+    { name: "2", val: 2 },
   ].forEach((gap) => {
     const gapCssValue = (gridGap / 2) * gap.val + units;
     css += `
